@@ -4,27 +4,10 @@ class QuantityMeasurementProblem:
     def __init__(self, length):
         self.length = length
 
-    @staticmethod
-    def length_equal(feat, inches):
-        """
-         compare with equal length
-        :param feat: feat param is one inch and 12 inch is one equal
-        :param inches: inches to compare with feet
-        :return:
-        """
-        if feat == 1 and inches == 12:
-            return True
-        if feat == 0 and inches == 0:
-            return True
+    def __eq__(self, other):
+        if other.length is None:
+            raise QuantityMeasurementException('Null')
+        elif other.length > 0:
+            return other.length * 12
         else:
-            return False
-
-    @staticmethod
-    def quantity_measurement(feat, inches):
-        equal = QuantityMeasurementProblem.length_equal(feat, inches)
-        if equal:
-            return True
-        else:
-            raise QuantityMeasurementException("Not Equal")
-
-
+            raise QuantityMeasurementException('Length is Invalid')

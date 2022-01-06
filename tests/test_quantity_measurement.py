@@ -4,12 +4,14 @@ from quantity_measurement_exception import QuantityMeasurementException
 
 
 class TestQuantityMeasurementProblem:
-        @staticmethod
-        def test_zero_feet():
-            """
-            testing for zero feet
-            :return: expected and pass the case
-            """
-            expected = True
-            actual = QuantityMeasurementProblem.quantity_measurement(0, 0)
-            assert actual == expected
+    @pytest.fixture()
+    def test_quantity_measurement(self):
+        self.length = QuantityMeasurementProblem()
+
+    @staticmethod
+    def test_null_check():
+        with pytest.raises(QuantityMeasurementException) as exe:
+            length1 = QuantityMeasurementProblem(0)
+            length2 = QuantityMeasurementProblem(None)
+            length1 == length2
+        assert exe.value.message == 'Null'
