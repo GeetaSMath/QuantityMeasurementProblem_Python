@@ -31,3 +31,15 @@ class TestQuantityMeasurementProblem:
             ref2 = QuantityMeasurementProblem(2)
             ref1 != ref2
         assert exe.value.message == 'References are not Equal'
+
+    @staticmethod
+    def test_type_check():
+        """
+         type check for type1 and type2
+        :return: not equal
+        """
+        with pytest.raises(QuantityMeasurementException) as exe:
+            type1 = QuantityMeasurementProblem(1)
+            type2 = QuantityMeasurementProblem(1)
+            type1 != type2
+        assert exe.value.message == 'Type Not Equal'

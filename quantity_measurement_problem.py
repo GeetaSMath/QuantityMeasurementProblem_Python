@@ -16,9 +16,11 @@ class QuantityMeasurementProblem:
         """
         if other.length is None:
             raise QuantityMeasurementException('none')
-        elif other.length != self.length:
+        if other.length != self.length:
             raise QuantityMeasurementException('References are not Equal')
-        elif other.length > 0:
+        if type(other.length) != (self.length):
+            raise QuantityMeasurementException('Type Not Equal')
+        if other.length > 0:
             return other.length * 12
         else:
             raise QuantityMeasurementException('Length is Invalid')
