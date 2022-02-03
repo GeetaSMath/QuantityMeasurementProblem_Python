@@ -13,11 +13,19 @@ class QuantityMeasurement:
 
     @staticmethod
     def feat_fun():
+        """
+         feat_fun to assign feat
+        :return:
+        """
         FEET = 3
         return FEET
 
     @staticmethod
     def yard_fun():
+        """
+        yard function to find
+        :return:
+        """
         YARD = 1
         return YARD
 
@@ -31,14 +39,14 @@ class QuantityMeasurement:
         feat = QuantityMeasurement.feat_fun()
         if other.length is None:
             raise QuantityMeasurementException('Null')
-        elif self.unit == other.unit or other.length == self.length:
+        if self.unit == other.unit or other.length == self.length:
             print("Values Not Equal")
             return True
-        elif type(self.length) != type(other.length):
+        if type(self.length) != type(other.length):
             raise QuantityMeasurementException('Type Not Equal')
-        elif self.length != other.length:
+        if self.length != other.length:
             raise QuantityMeasurementException('References are not Equal')
-        elif other.length > 0:
+        if other.length > 0:
             return other.length / 3
         else:
             raise QuantityMeasurementException("Invalid")
